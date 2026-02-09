@@ -1,0 +1,32 @@
+From b8cf118efa5e90568997efdf735dcc941fb4f9b1 Mon Sep 17 00:00:00 2001
+From: SpaceFox1 <44732812+SpaceFox1@users.noreply.github.com>
+Date: Mon, 9 Feb 2026 19:33:22 -0300
+Subject: [PATCH] feat: implement media_engine_IsSeeking
+
+---
+ dlls/mfmediaengine/main.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/dlls/mfmediaengine/main.c b/dlls/mfmediaengine/main.c
+index bfbe652226c..ea8236d8070 100644
+--- a/dlls/mfmediaengine/main.c
++++ b/dlls/mfmediaengine/main.c
+@@ -1825,9 +1825,12 @@ static USHORT WINAPI media_engine_GetReadyState(IMFMediaEngineEx *iface)
+ 
+ static BOOL WINAPI media_engine_IsSeeking(IMFMediaEngineEx *iface)
+ {
+-    FIXME("(%p): stub.\n", iface);
+-
+-    return FALSE;
++    struct media_engine *engine = impl_from_IMFMediaEngineEx(iface);
++    BOOL ret = FALSE;
++    EnterCriticalSection(&engine->cs);
++    ret = (engine->flags & FLAGS_ENGINE_SEEKING) ? TRUE : FALSE;
++    LeaveCriticalSection(&engine->cs);
++    return ret;
+ }
+ 
+ static double WINAPI media_engine_GetCurrentTime(IMFMediaEngineEx *iface)
+-- 
+2.53.0
+
