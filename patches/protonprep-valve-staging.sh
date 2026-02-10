@@ -280,8 +280,14 @@ apply_all_in_dir() {
 
 ### END WINE PENDING UPSTREAM SECTION ###
 
+### (2-7) START PROTON-FOX ADDITIONAL PATCHES ###
 
-### (2-7) PROTON-GE ADDITIONAL CUSTOM PATCHES ###
+    echo "FOX: WINE patches"
+    apply_all_in_dir "../patches/fox/wine/"
+
+### END PROTON-FOX ADDITIONAL PATCHES ###
+
+### (2-8) PROTON-GE ADDITIONAL CUSTOM PATCHES ###
 
     echo "WINE: Add winepulse fast polling env variable"
     apply_patch "../patches/proton/winepulse-fast-polling.patch"
