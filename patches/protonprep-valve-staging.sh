@@ -282,8 +282,8 @@ apply_all_in_dir() {
 
 ### (2-7) START PROTON-FOX ADDITIONAL PATCHES ###
 
-    echo "WINE: MFMediaEngine: implement IsSeeking method"
-    apply_patch "../patches/fox/wine/0001-feat-implement-media_engine_IsSeeking.patch"
+    echo "FOX: WINE patches"
+    apply_all_in_dir "../patches/fox/wine/"
 
 ### END PROTON-FOX ADDITIONAL PATCHES ###
 
