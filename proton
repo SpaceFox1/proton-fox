@@ -442,8 +442,12 @@ def setup_openvr_paths():
     if not openvr_paths or not file_exists(openvr_paths, follow_symlinks=True):
         return
 
-    with open(openvr_paths, 'r') as file:
+    with open(openvr_paths, 'r') as file: 
+      try:
         contents = json.load(file)
+      except json.JSONDecodeError:
+        log("Unable to parse openvrpaths.vrpath, skipping OpenVR runtime configuration.")
+        return
 
     if 'runtime' not in contents or type(contents['runtime']) != list:
         contents['runtime'] = []
