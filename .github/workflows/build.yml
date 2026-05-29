@@ -20,7 +20,7 @@ jobs:
           submodules: recursive
 
       - name: Apply patches
-        run: ./patches/protonprep-valve-staging.sh &> patchlog.txt
+        run: ./patches/protonprep-valve-staging.sh
 
       - name: Configure and Build
         run: |
