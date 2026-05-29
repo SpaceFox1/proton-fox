@@ -28,7 +28,7 @@ jobs:
           echo "=== Configuring build ==="
           ../configure.sh --build-name=Proton-fox
           echo "=== Building Proton-fox ==="
-          make -j4 redist
+          make redist
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
