@@ -23,7 +23,7 @@ jobs:
         run: |
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             # If triggered by a tag, use the tag name and strip a leading 'v' if present
-            VERSION="${GITHUB_REF_NAME#v}"
+            VERSION="${GITHUB_REF_NAME}"
           else
             # If triggered by a commit/PR, use the 7-character short Git SHA
             VERSION="${GITHUB_SHA::7}"
